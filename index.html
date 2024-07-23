@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>orangejuiceplz's github website</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -54,43 +54,65 @@
             </div>
         </section>
         <section id="projects">
-            <h2 class="slide-in">top projects</h2>
-            <div class="project-grid">
+            <h2 class="slide-in">featured projects</h2>
+            <div class="project-carousel">
                 <div class="project-card">
+                    <img src="/api/placeholder/300/200" alt="SmartCalc">
                     <h3>smartcalc</h3>
                     <p>a smart calculator application</p>
                     <a href="https://github.com/orangejuiceplz/smartCalc" target="_blank" class="github-link">view on github</a>
                 </div>
                 <div class="project-card">
+                    <img src="/api/placeholder/300/200" alt="System Monitor">
                     <h3>system-monitor</h3>
                     <p>a tool for monitoring system resources</p>
                     <a href="https://github.com/orangejuiceplz/System-Monitor" target="_blank" class="github-link">view on github</a>
                 </div>
                 <div class="project-card">
+                    <img src="/api/placeholder/300/200" alt="Secure Performance Fixes">
                     <h3>secure-performance-fixes</h3>
                     <p>optimizations and security enhancements</p>
                     <a href="https://github.com/orangejuiceplz/Secure-Performance-Fixes" target="_blank" class="github-link">view on github</a>
                 </div>
             </div>
+            <div class="carousel-controls">
+                <button id="prev-project">&lt;</button>
+                <button id="next-project">&gt;</button>
+            </div>
         </section>
         <section id="skills">
             <h2 class="slide-in">my skills</h2>
-            <div class="skills">
-                <div class="skill">
-                    <span>c++</span>
-                    <div class="skill-bar" data-skill="90%"></div>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <div class="skill">
+                        <span>C++</span>
+                        <div class="skill-bar" data-skill="90%"><div class="skill-level"></div></div>
+                    </div>
+                    <div class="skill">
+                        <span>Java</span>
+                        <div class="skill-bar" data-skill="85%"><div class="skill-level"></div></div>
+                    </div>
+                    <div class="skill">
+                        <span>Lua</span>
+                        <div class="skill-bar" data-skill="80%"><div class="skill-level"></div></div>
+                    </div>
+                    <div class="skill">
+                        <span>Python</span>
+                        <div class="skill-bar" data-skill="75%"><div class="skill-level"></div></div>
+                    </div>
                 </div>
-                <div class="skill">
-                    <span>java</span>
-                    <div class="skill-bar" data-skill="85%"></div>
-                </div>
-                <div class="skill">
-                    <span>lua</span>
-                    <div class="skill-bar" data-skill="80%"></div>
-                </div>
-                <div class="skill">
-                    <span>python</span>
-                    <div class="skill-bar" data-skill="75%"></div>
+                <div class="skill-category">
+                    <h3>Tools & Technologies</h3>
+                    <div class="tech-icons">
+                        <img src="https://img.icons8.com/?size=40&id=K6Jm3KxEwqz9&format=png&color=000000" alt="CMake" title="CMake">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/GNU_Compiler_Collection_logo.svg/35px-GNU_Compiler_Collection_logo.svg.png" alt="GCC" title="GCC">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Neovim-mark.svg/35px-Neovim-mark.svg.png" alt="NeoVim" title="NeoVim">
+                        <img src="https://img.icons8.com/plasticine/50/bash.png" alt="Bash" title="Bash">
+                        <img src="https://img.icons8.com/color/50/docker.png" alt="Docker" title="Docker">
+                        <img src="https://img.icons8.com/color/50/linux.png" alt="Linux" title="Linux">
+                        <img src="https://img.icons8.com/?size=50&id=lkk6STbDNYML&format=png&color=000000" alt="Arch" title="Arch Linux">
+                    </div>
                 </div>
             </div>
         </section>
@@ -148,6 +170,8 @@
             <img src="https://img.shields.io/discord/1087366162767167498" alt="Discord">
         </div>
     </footer>
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/carousel.js"></script>
+    <script src="js/skills-animation.js"></script>
 </body>
 </html>
