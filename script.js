@@ -3,13 +3,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const navLinks = document.querySelectorAll('nav a');
     const sections = document.querySelectorAll('main section');
   
-    // Navigation and section display
+    // nav and section display
     navLinks.forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
         const targetId = link.getAttribute('href').substring(1);
         
-        // Update active section
+        // update active section
         sections.forEach(section => {
           section.classList.remove('active');
           if (section.id === targetId) {
@@ -17,36 +17,34 @@ document.addEventListener('DOMContentLoaded', (event) => {
           }
         });
   
-        // Update active nav link
+        // update active nav link -- whatever that means?
         navLinks.forEach(navLink => navLink.classList.remove('active'));
         link.classList.add('active');
       });
     });
   
-    // Theme toggle
+    // theme toggler
     const themeToggle = document.createElement('button');
     themeToggle.textContent = 'Toggle Theme';
     themeToggle.id = 'theme-toggle';
     document.body.appendChild(themeToggle);
   
-    // Check if dark mode is already set (it should be by default)
     if (!document.documentElement.classList.contains('dark-mode')) {
       document.documentElement.classList.add('dark-mode');
     }
   
     themeToggle.addEventListener('click', () => {
       document.documentElement.classList.toggle('dark-mode');
-      // Update button text based on current mode
       themeToggle.textContent = document.documentElement.classList.contains('dark-mode') 
-        ? 'Switch to Light Mode' 
-        : 'Switch to Dark Mode';
+        ? 'switch to light mode' 
+        : 'switch to dark mode';
     });
   
-    // Set initial button text
-    themeToggle.textContent = 'Switch to Light Mode';
+    themeToggle.textContent = 'switch to light mode';
   
     // Blog post loader
     const blogSection = document.getElementById('blog');
+    const blogGrid = blogSection.querySelector('.blog-grid');
     const loadMoreButton = document.createElement('button');
     loadMoreButton.textContent = 'load more posts';
     loadMoreButton.style.marginTop = '20px';
@@ -56,11 +54,65 @@ document.addEventListener('DOMContentLoaded', (event) => {
   
     loadMoreButton.addEventListener('click', () => {
       const newPost = document.createElement('article');
+      newPost.className = 'card fade-in';
       newPost.innerHTML = `
-        <h3>blog post ${++postCount}</h3>
-        <p>(blog content) ${postCount}.</p>
+        <h3>Blog Post ${++postCount}</h3>
+        <p>Blog content ${postCount}.</p>
       `;
-      newPost.style.animation = 'fadeIn 0.5s ease-in';
-      blogSection.insertBefore(newPost, loadMoreButton);
+      blogGrid.appendChild(newPost);
     });
-  });
+
+    // Scroll animations
+    const scrollElements = document.querySelectorAll('.fade-in, .slide-in');
+    const skillBars = document.querySelectorAll('.skill-bar');
+
+    const elementInView = (el, percentageScroll = 100) => {
+      const elementTop = el.getBoundingClientRect().top;
+      return (
+        elementTop <= 
+        ((window.innerHeight || document.documentElement.clientHeight) * (percentageScroll/100))
+      );
+    };
+
+    const displayScrollElement = (element) => {
+      element.classList.add('scrolled');
+    };
+
+    const hideScrollElement = (element) => {
+      element.classList.remove('scrolled');
+    };
+
+    const handleScrollAnimation = () => {
+      scrollElements.forEach((el) => {
+        if (elementInView(el, 100)) {
+          displayScrollElement(el);
+        } else {
+          hideScrollElement(el);
+        }
+      })
+    }
+
+    const animateSkillBars = () => {
+      skillBars.forEach((bar) => {
+        if (elementInView(bar, 100)) {
+          bar.style.width = bar.dataset.skill;
+        }
+      });
+    }
+
+    window.addEventListener('scroll', () => {
+      handleScrollAnimation();
+      animateSkillBars();
+    });
+
+    // Initial check
+    handleScrollAnimation();
+    animateSkillBars();
+
+    // Form submission (prevent default for demo)
+    const contactForm = document.getElementById('contact-form');
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('wip');
+    });
+});

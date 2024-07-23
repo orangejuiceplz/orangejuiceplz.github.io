@@ -3,41 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>my github pages blog</title>
+    <title>My Advanced GitHub Pages Blog</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <nav>
         <ul>
-            <li><a href="#home" class="active">home</a></li>
-            <li><a href="#about">about</a></li>
-            <li><a href="#blog">blog</a></li>
-            <li><a href="#contact">contact</a></li>
+            <li><a href="#home" class="active"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+            <li><a href="#blog"><i class="fas fa-blog"></i> Blog</a></li>
+            <li><a href="#games"><i class="fas fa-gamepad"></i> Games</a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
         </ul>
     </nav>
     <main>
         <section id="home" class="active">
-            <h1>my github pages blog</h1>
-            <p>welcome to my minimalistic blog</p>
+            <h1 class="typing">My Advanced GitHub Pages Blog</h1>
+            <p class="fade-in">Welcome to my minimalistic yet feature-rich blog</p>
+            <div class="scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
+            </div>
         </section>
         <section id="about">
-            <h2>about me</h2>
-            <p>(intro paragraph)</p>
+            <h2 class="slide-in">About Me</h2>
+            <p class="fade-in">(Your intro paragraph here)</p>
+            <div class="skills">
+                <div class="skill">
+                    <span>HTML</span>
+                    <div class="skill-bar" data-skill="90%"></div>
+                </div>
+                <div class="skill">
+                    <span>CSS</span>
+                    <div class="skill-bar" data-skill="85%"></div>
+                </div>
+                <div class="skill">
+                    <span>JavaScript</span>
+                    <div class="skill-bar" data-skill="80%"></div>
+                </div>
+            </div>
         </section>
         <section id="blog">
-            <h2>latest posts</h2>
-            <article>
-                <h3>hello, GitHub!</h3>
-                <p>my first blog post with html, css, js</p>
-            </article>
+            <h2 class="slide-in">Latest Posts</h2>
+            <div class="blog-grid">
+                <article class="card">
+                    <h3>Hello, GitHub!</h3>
+                    <p>My first blog post with HTML, CSS, JS</p>
+                </article>
+            </div>
+        </section>
+        <section id="games">
+            <h2 class="slide-in">Games</h2>
+            <p class="fade-in">Check out these amazing games!</p>
+            <div class="game-grid">
+                <div class="game-card">
+                    <h3>Game 1</h3>
+                    <p>Coming soon...</p>
+                </div>
+                <div class="game-card">
+                    <h3>Game 2</h3>
+                    <p>Coming soon...</p>
+                </div>
+                <div class="game-card">
+                    <h3>Game 3</h3>
+                    <p>Coming soon...</p>
+                </div>
+            </div>
         </section>
         <section id="contact">
-            <h2>contact me</h2>
-            <p>@orangejuiceplzdev@gmail.com</p>
+            <h2 class="slide-in">Contact Me</h2>
+            <p class="fade-in">@orangejuiceplzdev@gmail.com</p>
+            <form id="contact-form" class="fade-in">
+                <input type="text" placeholder="Name" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 orangejuiceplz's github pages blog. all rights reserved</p>
+        <p>&copy; 2024 orangejuiceplz's GitHub Pages Blog. All rights reserved</p>
     </footer>
     <script src="script.js"></script>
 </body>
