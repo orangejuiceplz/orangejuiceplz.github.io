@@ -464,6 +464,74 @@ footer {
   background-color: var(--hover-color);
 }
 
+#discord-chat {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--card-background);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#chat-messages {
+  height: 300px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: var(--background-color);
+  border-radius: 5px;
+}
+
+.chat-message {
+  margin-bottom: 10px;
+  padding: 5px;
+  background-color: var(--hover-color);
+  border-radius: 5px;
+}
+
+.message-author {
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+.message-content {
+  margin-left: 10px;
+}
+
+.message-timestamp {
+  font-size: 0.8em;
+  color: var(--text-color);
+  opacity: 0.7;
+  float: right;
+}
+
+#chat-form {
+  display: flex;
+}
+
+#chat-input {
+  flex-grow: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  background-color: var(--card-background);
+  color: var(--text-color);
+}
+
+#chat-form button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  background-color: var(--accent-color);
+  color: var(--background-color);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#chat-form button:hover {
+  background-color: var(--secondary-color);
+}
+
 #contact-form {
   display: flex;
   flex-direction: column;
