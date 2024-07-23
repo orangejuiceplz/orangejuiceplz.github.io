@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+
     const skills = [
         { name: 'C++', level: '90%' },
         { name: 'Java', level: '85%' },
@@ -18,5 +19,20 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
         skillsContainer.appendChild(skillElement);
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const skillLevel = entry.target.querySelector('.skill-level');
+                const skill = entry.target.dataset.skill;
+                skillLevel.style.width = skill;
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.skill-bar').forEach(bar => {
+        observer.observe(bar);
     });
 });

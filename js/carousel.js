@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showProject(index) {
         const offset = index * -100;
+        // smooth transition effect
+        carousel.style.transition = 'transform 0.5s ease-in-out';
         carousel.style.transform = `translateX(${offset}%)`;
     }
 
@@ -18,4 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
         currentIndex = (currentIndex + 1) % 3;
         showProject(currentIndex);
     });
+
+    // rotate/5sec
+    setInterval(() => {
+        currentIndex = (currentIndex + 1) % 3;
+        showProject(currentIndex);
+    }, 5000);
 });

@@ -33,6 +33,91 @@ nav {
   backdrop-filter: blur(10px);
 }
 
+.home-content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.quick-links, .featured-project {
+  flex: 1;
+  margin: 0 1rem;
+}
+
+.quick-links ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.quick-links li {
+  margin-bottom: 0.5rem;
+}
+
+.quick-links a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.quick-links a:hover {
+  color: var(--secondary-color);
+}
+
+.featured-project .project-card {
+  background-color: var(--card-background);
+  border-radius: 10px;
+  padding: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featured-project .project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.featured-project img {
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.featured-project h4 {
+  color: var(--accent-color);
+  margin-bottom: 0.5rem;
+}
+
+.featured-project p {
+  margin-bottom: 1rem;
+}
+
+.github-link {
+  display: inline-block;
+  background-color: var(--accent-color);
+  color: var(--background-color);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.github-link:hover {
+  background-color: var(--secondary-color);
+}
+
+button {
+  background-color: var(--accent-color);
+  color: var(--background-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--secondary-color);
+}
+
 nav ul {
   list-style-type: none;
   padding: 0;
