@@ -1,1 +1,122 @@
-c++ > rust
+<!DOCTYPE html>
+<html lang="en" class="dark-mode">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mastering c++: the experience</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .blog-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: var(--accent-color);
+            color: var(--background-color);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: var(--secondary-color);
+        }
+        .scroll-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            color: var(--accent-color);
+            font-size: 24px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">back to main</a>
+    <main class="blog-content">
+        <h1 class="typing">mastering c++: the experience</h1>
+        <p class="fade-in">hey there! orangejuiceplz here, and i'm excited to share my two-year journey of mastering c++. it's been one hell of a ride so far</p>
+        
+        <h2 class="fade-in">the beginning: diving into the deep end</h2>
+        <p class="fade-in">when i first decided to learn c++, i had no idea what i was getting myself into. coming from higher-level languages, the concept of memory management and pointers seemed like black magic. but hey, no pain, no gain, right?</p>
+        
+        <h2 class="fade-in">month 3: the pointer paradox</h2>
+        <p class="fade-in">remember that time when you thought you finally understood pointers, only to realize you've created a monster of a memory leak? yeah, that was me every other day. but slowly, the fog started to clear, and i began to see the beauty in the madness.</p>
+        
+        <h2 class="fade-in">month 6: template temptations</h2>
+        <p class="fade-in">templates. oh boy, templates. at first, they seemed like the answer to all my problems. generic programming? sign me up! but then came the cryptic error messages. deciphering them became my new hobby (or nightmare, depending on the day).</p>
+        
+        <h2 class="fade-in">year 1: the std::revolution</h2>
+        <p class="fade-in">halfway through my journey, i fell in love with the standard library. suddenly, i was wielding vectors, maps, and algorithms like a pro. my code started to look less like a war zone and more like a well-organized city. progress!</p>
+        
+        <h2 class="fade-in">month 15: concurrency chaos</h2>
+        <p class="fade-in">multithreading entered the chat, and boy, did it make an entrance. race conditions, deadlocks, and the mysterious world of mutexes became my new playground. i learned that "it works on my machine" is both a blessing and a curse.</p>
+        
+        <h2 class="fade-in">month 18: optimization obsession</h2>
+        <p class="fade-in">as i dove deeper into c++, i became obsessed with optimization. cache-friendly code, move semantics, and compile-time computations consumed my thoughts. i started seeing opportunities for speed improvements everywhere. my friends started to worry.</p>
+        
+        <h2 class="fade-in">month 21: the meta madness</h2>
+        <p class="fade-in">just when i thought i had seen it all, metaprogramming entered the scene. suddenly, i was writing code that writes code. it felt like inception, but with more semicolons. my dreams were now in c++.</p>
+        
+        <h2 class="fade-in">second year: the end... or just the beginning?</h2>
+        <p class="fade-in">two years later, here i am. i can confidently say i've "mastered" c++, but the journey never really ends, does it? there's always a new feature to learn, a new optimization technique to discover, or a new way to make the compiler cry.</p>
+        
+        <h2 class="fade-in">lessons learned</h2>
+        <ul class="fade-in">
+            <li>patience is key my ass</li>
+            <li>embrace the errors. each cryptic message is a learning opportunity in disguise</li>
+            <li>the community is awesome. never underestimate the power of a good stackoverflow question</li>
+            <li>c++ is more than a language; it's a way of fucking dealing with problems (women)</li>
+        </ul>
+        
+        <p class="fade-in">to all the aspiring c++ developers out there: keep pushing, keep learning, and most importantly, keep coding. the journey is tough, but the rewards are worth it. here's to another two years of adventures in the land of c++!</p>
+        
+        <p class="fade-in">until next time, happy coding!</p>
+        <p class="fade-in">- orangejuiceplz</p>
+    </main>
+    <div class="scroll-indicator">
+        <i class="fas fa-chevron-down"></i>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+
+            const fadeInOnScroll = () => {
+                fadeElements.forEach((element) => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementBottom = element.getBoundingClientRect().bottom;
+                    if (elementTop < window.innerHeight && elementBottom > 0) {
+                        element.classList.add('visible');
+                    }
+                });
+
+                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
+                    scrollIndicator.style.opacity = '0';
+                } else {
+                    scrollIndicator.style.opacity = '1';
+                }
+            };
+
+            window.addEventListener('scroll', fadeInOnScroll);
+            fadeInOnScroll(); // Initial check
+        });
+    </script>
+</body>
+</html>
