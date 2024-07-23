@@ -3,86 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Advanced GitHub Pages Blog</title>
+    <title>orangejuiceplz's github website</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <nav>
         <ul>
-            <li><a href="#home" class="active"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
-            <li><a href="#blog"><i class="fas fa-blog"></i> Blog</a></li>
-            <li><a href="#games"><i class="fas fa-gamepad"></i> Games</a></li>
-            <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="#home" class="active"><i class="fas fa-home"></i> home</a></li>
+            <li><a href="#about"><i class="fas fa-user"></i> about</a></li>
+            <li><a href="#projects"><i class="fas fa-code"></i> projects</a></li>
+            <li><a href="#skills"><i class="fas fa-cogs"></i> skills</a></li>
+            <li><a href="#blog"><i class="fas fa-blog"></i> blog</a></li>
+            <li><a href="#stats"><i class="fas fa-chart-bar"></i> stats</a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i> contact</a></li>
         </ul>
     </nav>
     <main>
         <section id="home" class="active">
-            <h1 class="typing">My Advanced GitHub Pages Blog</h1>
-            <p class="fade-in">Welcome to my minimalistic yet feature-rich blog</p>
+            <h1 class="typing">hey! i'm orangejuiceplz</h1>
+            <p class="fade-in">open source developer and cybersecurity enthusiast</p>
             <div class="scroll-indicator">
                 <i class="fas fa-chevron-down"></i>
             </div>
         </section>
         <section id="about">
-            <h2 class="slide-in">About Me</h2>
-            <p class="fade-in">(Your intro paragraph here)</p>
+            <h2 class="slide-in">about me</h2>
+            <p class="fade-in">i'm an open source developer from the united states, passionate about cybersecurity and creating useful software. i enjoy working on c++, java, lua, and python projects.</p>
+            <p class="fade-in">currently learning c++ and always eager to discuss tech and arch linux!</p>
+            <p class="fade-in">fun fact: there's another person named orangejuiceplz, and we've spoken. she's really sweet, but she's not me!</p>
+        </section>
+        <section id="projects">
+            <h2 class="slide-in">top projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>smartcalc</h3>
+                    <p>a smart calculator application</p>
+                </div>
+                <div class="project-card">
+                    <h3>system-monitor</h3>
+                    <p>a tool for monitoring system resources</p>
+                </div>
+            </div>
+        </section>
+        <section id="skills">
+            <h2 class="slide-in">my tech stack</h2>
             <div class="skills">
                 <div class="skill">
-                    <span>HTML</span>
+                    <span>c++</span>
                     <div class="skill-bar" data-skill="90%"></div>
                 </div>
                 <div class="skill">
-                    <span>CSS</span>
+                    <span>java</span>
                     <div class="skill-bar" data-skill="85%"></div>
                 </div>
                 <div class="skill">
-                    <span>JavaScript</span>
+                    <span>lua</span>
                     <div class="skill-bar" data-skill="80%"></div>
+                </div>
+                <div class="skill">
+                    <span>python</span>
+                    <div class="skill-bar" data-skill="75%"></div>
                 </div>
             </div>
         </section>
         <section id="blog">
-            <h2 class="slide-in">Latest Posts</h2>
+            <h2 class="slide-in">latest posts</h2>
             <div class="blog-grid">
                 <article class="card">
-                    <h3>Hello, GitHub!</h3>
-                    <p>My first blog post with HTML, CSS, JS</p>
+                    <h3>learning c++</h3>
+                    <p>my journey into c++ programming</p>
                 </article>
             </div>
         </section>
-        <section id="games">
-            <h2 class="slide-in">Games</h2>
-            <p class="fade-in">Check out these amazing games!</p>
-            <div class="game-grid">
-                <div class="game-card">
-                    <h3>Game 1</h3>
-                    <p>Coming soon...</p>
+        <section id="stats">
+            <h2 class="slide-in">github stats</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>profile views</h3>
+                    <p id="profile-views">loading...</p>
                 </div>
-                <div class="game-card">
-                    <h3>Game 2</h3>
-                    <p>Coming soon...</p>
-                </div>
-                <div class="game-card">
-                    <h3>Game 3</h3>
-                    <p>Coming soon...</p>
+                <div class="stat-card">
+                    <h3>commit activity</h3>
+                    <p>system-monitor: <span id="system-monitor-commits">loading...</span></p>
+                    <p>smartcalc: <span id="smartcalc-commits">loading...</span></p>
                 </div>
             </div>
         </section>
         <section id="contact">
-            <h2 class="slide-in">Contact Me</h2>
-            <p class="fade-in">@orangejuiceplzdev@gmail.com</p>
+            <h2 class="slide-in">contact me</h2>
+            <p class="fade-in">reach out to me on discord: @orangejuiceplz</p>
+            <p class="fade-in">or email me: orangejuiceplzdev@gmail.com</p>
             <form id="contact-form" class="fade-in">
-                <input type="text" placeholder="Name" required>
-                <input type="email" placeholder="Email" required>
-                <textarea placeholder="Message" required></textarea>
-                <button type="submit">Send Message</button>
+                <input type="text" placeholder="name" required>
+                <input type="email" placeholder="email" required>
+                <textarea placeholder="message" required></textarea>
+                <button type="submit">send message</button>
             </form>
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 orangejuiceplz's GitHub Pages Blog. All rights reserved</p>
+        <p>&copy; 2024 orangejuiceplz's github pages. all rights reserved</p>
     </footer>
     <script src="script.js"></script>
 </body>

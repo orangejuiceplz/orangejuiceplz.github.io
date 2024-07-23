@@ -1,4 +1,5 @@
 // script.js
+
 document.addEventListener('DOMContentLoaded', (event) => {
     const navLinks = document.querySelectorAll('nav a');
     const sections = document.querySelectorAll('main section');
@@ -17,21 +18,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
           }
         });
   
-        // update active nav link -- whatever that means?
+        // update active nav link
         navLinks.forEach(navLink => navLink.classList.remove('active'));
         link.classList.add('active');
       });
     });
   
-    // theme toggler
+    // thene toggler
     const themeToggle = document.createElement('button');
-    themeToggle.textContent = 'Toggle Theme';
+    themeToggle.textContent = 'toggle theme';
     themeToggle.id = 'theme-toggle';
     document.body.appendChild(themeToggle);
-  
-    if (!document.documentElement.classList.contains('dark-mode')) {
-      document.documentElement.classList.add('dark-mode');
-    }
   
     themeToggle.addEventListener('click', () => {
       document.documentElement.classList.toggle('dark-mode');
@@ -40,29 +37,35 @@ document.addEventListener('DOMContentLoaded', (event) => {
         : 'switch to dark mode';
     });
   
-    themeToggle.textContent = 'switch to light mode';
-  
-    // Blog post loader
-    const blogSection = document.getElementById('blog');
-    const blogGrid = blogSection.querySelector('.blog-grid');
-    const loadMoreButton = document.createElement('button');
-    loadMoreButton.textContent = 'load more posts';
-    loadMoreButton.style.marginTop = '20px';
-    blogSection.appendChild(loadMoreButton);
-  
-    let postCount = 1;
-  
-    loadMoreButton.addEventListener('click', () => {
-      const newPost = document.createElement('article');
-      newPost.className = 'card fade-in';
-      newPost.innerHTML = `
-        <h3>Blog Post ${++postCount}</h3>
-        <p>Blog content ${postCount}.</p>
-      `;
-      blogGrid.appendChild(newPost);
-    });
+    // upd profile views
+    const profileViews = document.getElementById('profile-views');
+    fetch('https://api.github.com/users/orangejuiceplz')
+        .then(response => response.json())
+        .then(data => {
+            profileViews.textContent = data.followers;
+        })
+        .catch(error => {
+            profileViews.textContent = 'unavailable';
+        });
 
-    // Scroll animations
+    // upd commit activity
+    const updateCommitActivity = (repoName, elementId) => {
+        const element = document.getElementById(elementId);
+        fetch(`https://api.github.com/repos/orangejuiceplz/${System-Monitor}/stats/participation`)
+            .then(response => response.json())
+            .then(data => {
+                const totalCommits = data.all.reduce((a, b) => a + b, 0);
+                element.textContent = totalCommits;
+            })
+            .catch(error => {
+                element.textContent = 'unavailable';
+            });
+    };
+
+    updateCommitActivity('System-Monitor', 'system-monitor-commits');
+    updateCommitActivity('smartCalc', 'smartcalc-commits');
+
+    // scroll anims
     const scrollElements = document.querySelectorAll('.fade-in, .slide-in');
     const skillBars = document.querySelectorAll('.skill-bar');
 
@@ -105,14 +108,34 @@ document.addEventListener('DOMContentLoaded', (event) => {
       animateSkillBars();
     });
 
-    // Initial check
+    // initial check
     handleScrollAnimation();
     animateSkillBars();
 
-    // Form submission (prevent default for demo)
+    // feedback submissions!
     const contactForm = document.getElementById('contact-form');
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      alert('wip');
+      alert('message sent (this is a demo)');
+    });
+
+    // blog post loader
+    const blogSection = document.getElementById('blog');
+    const blogGrid = blogSection.querySelector('.blog-grid');
+    const loadMoreButton = document.createElement('button');
+    loadMoreButton.textContent = 'load more posts';
+    loadMoreButton.style.marginTop = '20px';
+    blogSection.appendChild(loadMoreButton);
+  
+    let postCount = 1;
+  
+    loadMoreButton.addEventListener('click', () => {
+      const newPost = document.createElement('article');
+      newPost.className = 'card fade-in';
+      newPost.innerHTML = `
+        <h3>blog post ${++postCount}</h3>
+        <p>blog content ${postCount}.</p>
+      `;
+      blogGrid.appendChild(newPost);
     });
 });
