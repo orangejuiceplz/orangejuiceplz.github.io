@@ -37,6 +37,111 @@ nav {
   display: flex;
   justify-content: space-between;
   margin-top: 2rem;
+  gap: 2rem;
+}
+
+.intro-card, .quick-stats {
+  flex: 1;
+  background-color: var(--card-background);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.quick-stats ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.quick-stats li {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.quick-stats i {
+  margin-right: 0.5rem;
+  color: var(--secondary-color);
+}
+
+.featured-content {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.featured-project, .latest-blog-post {
+  flex: 1;
+}
+
+.project-card, .blog-card {
+  background-color: var(--card-background);
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover, .blog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.project-card img {
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.project-card h4, .blog-card h4 {
+  color: var(--accent-color);
+  margin-bottom: 0.5rem;
+}
+
+.github-link, .read-more {
+  display: inline-block;
+  background-color: var(--accent-color);
+  color: var(--background-color);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.github-link:hover, .read-more:hover {
+  background-color: var(--secondary-color);
+}
+
+.cta-section {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 2rem;
+  background-color: var(--card-background);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: var(--accent-color);
+  color: var(--background-color);
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 1rem;
+}
+
+.cta-button:hover {
+  background-color: var(--secondary-color);
+  transform: scale(1.05);
+}
+
+.intro-card h2, .quick-stats h3 {
+  color: var(--accent-color);
+  margin-bottom: 1rem;
 }
 
 .quick-links, .featured-project {

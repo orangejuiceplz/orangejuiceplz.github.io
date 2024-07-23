@@ -10,24 +10,69 @@
 <body>
     <nav>
         <ul>
-            <li><a href="#home" class="active"><i class="fas fa-home"></i> home</a></li>
-            <li><a href="#about"><i class="fas fa-user"></i> about</a></li>
-            <li><a href="#projects"><i class="fas fa-code"></i> projects</a></li>
-            <li><a href="#skills"><i class="fas fa-cogs"></i> skills</a></li>
-            <li><a href="#blog"><i class="fas fa-blog"></i> blog</a></li>
-            <li><a href="#stats"><i class="fas fa-chart-bar"></i> stats</a></li>
-            <li><a href="#contact"><i class="fas fa-envelope"></i> contact</a></li>
+            <li><a href="#home" class="active"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+            <li><a href="#projects"><i class="fas fa-code"></i> Projects</a></li>
+            <li><a href="#skills"><i class="fas fa-cogs"></i> Skills</a></li>
+            <li><a href="#blog"><i class="fas fa-blog"></i> Blog</a></li>
+            <li><a href="#stats"><i class="fas fa-chart-bar"></i> Stats</a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
         </ul>
     </nav>
     <main>
         <section id="home" class="active">
             <h1 class="typing">hey! i'm orangejuiceplz...</h1>
-            <p class="fade-in">open source developer and cybersecurity enthusiast</p>
+            <p class="fade-in">your fellow open source developer and cybersecurity enthusiast here</p>
+            
+            <div class="home-content">
+                <div class="intro-card">
+                    <h2>welcome to the digi-crib</h2>
+                    <p>i'm passionate about creating secure, efficient software and contributing to the open-source community</p>
+                </div>
+                
+                <div class="quick-stats">
+                    <h3>Quick Stats</h3>
+                    <ul>
+                        <li><i class="fas fa-code-branch"></i> <span id="total-repos">Loading...</span> Repositories</li>
+                        <li><i class="fas fa-star"></i> <span id="total-stars">Loading...</span> Stars</li>
+                        <li><i class="fas fa-users"></i> <span id="total-followers">Loading...</span> Followers</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="featured-content">
+                <div class="featured-project">
+                    <h3>Featured Project</h3>
+                    <div class="project-card">
+                        <img src="/api/placeholder/300/200" alt="System Monitor">
+                        <h4>System Monitor</h4>
+                        <p>A powerful tool for monitoring system resources in real-time.</p>
+                        <a href="https://github.com/orangejuiceplz/System-Monitor" target="_blank" class="github-link">View on GitHub</a>
+                    </div>
+                </div>
+                
+                <div class="latest-blog-post">
+                    <h3>latest blog post</h3>
+                    <div class="blog-card">
+                        <h4>mastering c++: the experience</h4>
+                        <p>explore the hell i've gotten myself into</p>
+                        <a href="blog/mastering-cpp.html" class="read-more">read more</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta-section">
+                <h3>wanna chat?</h3>
+                <p>interested in collaborating or just want to say hi?</p>
+                <a href="#contact" class="cta-button">Get in Touch</a>
+            </div>
+            
             <div class="social-links">
                 <a href="https://github.com/orangejuiceplz" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="https://discord.gg/yYdE2S43cY" target="_blank"><i class="fab fa-discord"></i></a>
                 <a href="mailto:orangejuiceplzdev@gmail.com"><i class="fas fa-envelope"></i></a>
             </div>
+            
             <div class="scroll-indicator">
                 <i class="fas fa-chevron-down"></i>
             </div>
@@ -84,26 +129,26 @@
             <h2 class="slide-in">my skills</h2>
             <div class="skills-container">
                 <div class="skill-category">
-                    <h3>Languages</h3>
+                    <h3>languages</h3>
                     <div class="skill">
-                        <span>C++</span>
+                        <span>c++</span>
                         <div class="skill-bar" data-skill="90%"><div class="skill-level"></div></div>
                     </div>
                     <div class="skill">
-                        <span>Java</span>
+                        <span>java</span>
                         <div class="skill-bar" data-skill="85%"><div class="skill-level"></div></div>
                     </div>
                     <div class="skill">
-                        <span>Lua</span>
+                        <span>lua</span>
                         <div class="skill-bar" data-skill="80%"><div class="skill-level"></div></div>
                     </div>
                     <div class="skill">
-                        <span>Python</span>
+                        <span>python</span>
                         <div class="skill-bar" data-skill="75%"><div class="skill-level"></div></div>
                     </div>
                 </div>
                 <div class="skill-category">
-                    <h3>Tools & Technologies</h3>
+                    <h3>tools & technologies</h3>
                     <div class="tech-icons">
                         <img src="https://img.icons8.com/?size=40&id=K6Jm3KxEwqz9&format=png&color=000000" alt="CMake" title="CMake">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/GNU_Compiler_Collection_logo.svg/35px-GNU_Compiler_Collection_logo.svg.png" alt="GCC" title="GCC">
