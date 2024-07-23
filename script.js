@@ -1,50 +1,39 @@
 // script.js
 document.addEventListener('DOMContentLoaded', (event) => {
-    // smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
-    });
-  
-    // dark mode togglings
-    const darkModeToggle = document.createElement('button');
-    darkModeToggle.textContent = 'toggle dark mode';
-    darkModeToggle.style.position = 'fixed';
-    darkModeToggle.style.top = '10px';
-    darkModeToggle.style.right = '10px';
-    darkModeToggle.style.zIndex = '1000';
-    document.body.appendChild(darkModeToggle);
-  
-    darkModeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      if (document.body.classList.contains('dark-mode')) {
-        document.documentElement.style.setProperty('--background-color', '#2c3e50');
-        document.documentElement.style.setProperty('--text-color', '#ecf0f1');
-      } else {
-        document.documentElement.style.setProperty('--background-color', '#ecf0f1');
-        document.documentElement.style.setProperty('--text-color', '#34495e');
-      }
-    });
-  
-    // fade in effect?!!!!
+    const navLinks = document.querySelectorAll('nav a');
     const sections = document.querySelectorAll('main section');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('fade-in');
-        }
-      });
-    }, { threshold: 0.1 });
   
-    sections.forEach(section => {
-      observer.observe(section);
+    // nav and section display
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        
+        // update active section
+        sections.forEach(section => {
+          section.classList.remove('active');
+          if (section.id === targetId) {
+            section.classList.add('active');
+          }
+        });
+  
+        // upd active nav link , whatever that is 
+        navLinks.forEach(navLink => navLink.classList.remove('active'));
+        link.classList.add('active');
+      });
     });
   
-    // a blog post loader
+    // theme toggler
+    const themeToggle = document.createElement('button');
+    themeToggle.textContent = 'Toggle Theme';
+    themeToggle.id = 'theme-toggle';
+    document.body.appendChild(themeToggle);
+  
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark-mode');
+    });
+  
+    // blog post loader
     const blogSection = document.getElementById('blog');
     const loadMoreButton = document.createElement('button');
     loadMoreButton.textContent = 'load more posts';
@@ -59,7 +48,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         <h3>blog post ${++postCount}</h3>
         <p>(blog content) ${postCount}.</p>
       `;
-      newPost.classList.add('fade-in');
+      newPost.style.animation = 'fadeIn 0.5s ease-in';
       blogSection.insertBefore(newPost, loadMoreButton);
     });
   });
