@@ -3,13 +3,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const navLinks = document.querySelectorAll('nav a');
     const sections = document.querySelectorAll('main section');
   
-    // nav and section display
+    // Navigation and section display
     navLinks.forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
         const targetId = link.getAttribute('href').substring(1);
         
-        // update active section
+        // Update active section
         sections.forEach(section => {
           section.classList.remove('active');
           if (section.id === targetId) {
@@ -17,23 +17,35 @@ document.addEventListener('DOMContentLoaded', (event) => {
           }
         });
   
-        // upd active nav link , whatever that is 
+        // Update active nav link
         navLinks.forEach(navLink => navLink.classList.remove('active'));
         link.classList.add('active');
       });
     });
   
-    // theme toggler
+    // Theme toggle
     const themeToggle = document.createElement('button');
     themeToggle.textContent = 'Toggle Theme';
     themeToggle.id = 'theme-toggle';
     document.body.appendChild(themeToggle);
   
+    // Check if dark mode is already set (it should be by default)
+    if (!document.documentElement.classList.contains('dark-mode')) {
+      document.documentElement.classList.add('dark-mode');
+    }
+  
     themeToggle.addEventListener('click', () => {
       document.documentElement.classList.toggle('dark-mode');
+      // Update button text based on current mode
+      themeToggle.textContent = document.documentElement.classList.contains('dark-mode') 
+        ? 'Switch to Light Mode' 
+        : 'Switch to Dark Mode';
     });
   
-    // blog post loader
+    // Set initial button text
+    themeToggle.textContent = 'Switch to Light Mode';
+  
+    // Blog post loader
     const blogSection = document.getElementById('blog');
     const loadMoreButton = document.createElement('button');
     loadMoreButton.textContent = 'load more posts';

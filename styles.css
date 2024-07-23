@@ -1,0 +1,122 @@
+/* styles.css */
+:root {
+  --background-color: #1a1a1a;
+  --text-color: #f0f0f0;
+  --accent-color: #3498db;
+  --secondary-color: #2ecc71;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+nav {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover, nav ul li a.active {
+  color: var(--accent-color);
+}
+
+main {
+  flex-grow: 1;
+  padding: 6rem 2rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+section {
+  display: none;
+  animation: fadeIn 0.5s ease-in;
+}
+
+section.active {
+  display: block;
+}
+
+h1, h2, h3 {
+  color: var(--accent-color);
+}
+
+footer {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-color);
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Light mode styles */
+html:not(.dark-mode) {
+  --background-color: #f0f0f0;
+  --text-color: #1a1a1a;
+}
+
+#theme-toggle {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1001;
+  background-color: var(--accent-color);
+  color: var(--background-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#theme-toggle:hover {
+  background-color: var(--secondary-color);
+}
+
+@media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  nav ul li {
+    margin: 10px 0;
+  }
+}
