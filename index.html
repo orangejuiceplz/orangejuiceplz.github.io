@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arraylist visualizer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>arraylist visualizer</h1>
+        
+        <div class="controls">
+            <input type="text" id="valueInput" placeholder="enter value">
+            <input type="number" id="indexInput" placeholder="enter index">
+            <button onclick="addElement()">add</button>
+            <button onclick="addAtIndex()">add at index</button>
+            <button onclick="removeElement()">remove last</button>
+            <button onclick="removeAtIndex()">remove at index</button>
+            <button onclick="setAtIndex()">set at index</button>
+            <button onclick="getAtIndex()">get at index</button>
+            <button onclick="findIndex()">index of</button>
+            <button onclick="clearArray()">clear</button>
+        </div>
+
+        <div class="method-result" id="methodResult"></div>
+        <div class="array-container" id="arrayContainer">
+            <!-- Array elements will be displayed here -->
+        </div>
+
+        <div class="array-info">
+            <p>size: <span id="arraySize">0</span></p>
+            <p>is empty: <span id="isEmpty">true</span></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
