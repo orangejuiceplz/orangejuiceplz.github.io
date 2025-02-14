@@ -1,196 +1,175 @@
-class ArrayList {
-    constructor() {
+class TypedArrayList {
+    constructor(type, name) {
+        this.type = type;
+        this.name = name;
         this.elements = [];
-        this.container = document.getElementById('arrayContainer');
-        this.sizeDisplay = document.getElementById('arraySize');
-        this.isEmptyDisplay = document.getElementById('isEmpty');
-        this.methodResult = document.getElementById('methodResult');
+        this.createDOMElements();
     }
 
-    add(value) {
-        this.elements.push(value);
-        this.updateDisplay();
-        this.animateElement(this.elements.length - 1, 'slide-in');
+    createDOMElements() {
+        const container = document.createElement('div');
+        container.className = 'arraylist-container fade-in';
+        container.innerHTML = `
+            <div class="arraylist-header">
+                <span class="arraylist-title">${this.name}</span>
+                <span class="arraylist-type">${this.type}</span>
+            </div>
+            <div class="arraylist-controls">
+                <input type="text" placeholder="enter value" class="value-input">
+                <input type="number" placeholder="enter index" class="index-input">
+                <button onclick="lists['${this.name}'].add()">add</button>
+                <button onclick="lists['${this.name}'].addAtIndex()">add at index</button>
+                <button onclick="lists['${this.name}'].removeAtIndex()">remove at index</button>
+                <button onclick="lists['${this.name}'].removeLast()">remove last</button>
+                <button onclick="lists['${this.name}'].clear()">clear</button>
+            </div>
+            <div class="array-container"></div>
+            <div class="array-info">
+                <span>size: <span class="size">0</span></span>
+                <span>is empty: <span class="empty">true</span></span>
+            </div>
+            <div class="message"></div>
+        `;
+        document.getElementById('arrayLists').appendChild(container);
+        this.domElements = {
+            container: container,
+            arrayContainer: container.querySelector('.array-container'),
+            valueInput: container.querySelector('.value-input'),
+            indexInput: container.querySelector('.index-input'),
+            sizeDisplay: container.querySelector('.size'),
+            emptyDisplay: container.querySelector('.empty'),
+            message: container.querySelector('.message')
+        };
     }
 
-    addAt(index, value) {
-        if (index >= 0 && index <= this.elements.length) {
-            this.elements.splice(index, 0, value);
-            this.updateDisplay();
-            this.animateElement(index, 'slide-in');
-            return true;
+    validateValue(value) {
+        switch(this.type) {
+            case 'string':
+                return typeof value === 'string';
+            case 'number':
+                return !isNaN(Number(value));
+            case 'boolean':
+                return value.toLowerCase() === 'true' || value.toLowerCase() === 'false';
+            default:
+                return false;
         }
-        return false;
+    }
+
+    convertValue(value) {
+        switch(this.type) {
+            case 'number':
+                return Number(value);
+            case 'boolean':
+                return value.toLowerCase() === 'true';
+            default:
+                return value;
+        }
+    }
+
+    showMessage(text, isError = false) {
+        this.domElements.message.className = `message ${isError ? 'error-message' : 'success-message'}`;
+        this.domElements.message.textContent = text;
+        setTimeout(() => this.domElements.message.textContent = '', 3000);
+    }
+
+    add() {
+        const value = this.domElements.valueInput.value.trim();
+        if (!value) return;
+
+        if (!this.validateValue(value)) {
+            this.showMessage(`invalid ${this.type} value`, true);
+            return;
+        }
+
+        const convertedValue = this.convertValue(value);
+        this.elements.push(convertedValue);
+        this.updateDisplay();
+        this.domElements.valueInput.value = '';
+        this.showMessage(`added "${value}"`);
+    }
+
+    addAtIndex() {
+        const value = this.domElements.valueInput.value.trim();
+        const index = parseInt(this.domElements.indexInput.value);
+
+        if (!value || isNaN(index)) return;
+        if (!this.validateValue(value)) {
+            this.showMessage(`invalid ${this.type} value`, true);
+            return;
+        }
+
+        if (index < 0 || index > this.elements.length) {
+            this.showMessage('invalid index', true);
+            return;
+        }
+
+        const convertedValue = this.convertValue(value);
+        this.elements.splice(index, 0, convertedValue);
+        this.updateDisplay();
+        this.domElements.valueInput.value = '';
+        this.domElements.indexInput.value = '';
+        this.showMessage(`added "${value}" at index ${index}`);
+    }
+
+    removeAtIndex() {
+        const index = parseInt(this.domElements.indexInput.value);
+        if (isNaN(index) || index < 0 || index >= this.elements.length) {
+            this.showMessage('invalid index', true);
+            return;
+        }
+
+        this.elements.splice(index, 1);
+        this.updateDisplay();
+        this.domElements.indexInput.value = '';
+        this.showMessage(`removed element at index ${index}`);
     }
 
     removeLast() {
-        if (this.elements.length > 0) {
-            const lastIndex = this.elements.length - 1;
-            this.animateElement(lastIndex, 'slide-out', () => {
-                this.elements.pop();
-                this.updateDisplay();
-            });
+        if (this.elements.length === 0) {
+            this.showMessage('list is empty', true);
+            return;
         }
-    }
-
-    removeAt(index) {
-        if (index >= 0 && index < this.elements.length) {
-            this.animateElement(index, 'slide-out', () => {
-                this.elements.splice(index, 1);
-                this.updateDisplay();
-            });
-            return true;
-        }
-        return false;
-    }
-
-    set(index, value) {
-        if (index >= 0 && index < this.elements.length) {
-            this.elements[index] = value;
-            this.updateDisplay();
-            this.animateElement(index, 'pulse');
-            return true;
-        }
-        return false;
-    }
-
-    get(index) {
-        if (index >= 0 && index < this.elements.length) {
-            this.animateElement(index, 'highlight');
-            return this.elements[index];
-        }
-        return null;
-    }
-
-    indexOf(value) {
-        const index = this.elements.indexOf(value);
-        if (index !== -1) {
-            this.animateElement(index, 'highlight');
-        }
-        return index;
+        this.elements.pop();
+        this.updateDisplay();
+        this.showMessage('removed last element');
     }
 
     clear() {
         this.elements = [];
         this.updateDisplay();
-    }
-
-    animateElement(index, animationClass, callback) {
-        const element = this.container.children[index];
-        if (element) {
-            element.classList.add(animationClass);
-            if (callback) {
-                setTimeout(callback, 500);
-            }
-            setTimeout(() => {
-                element.classList.remove(animationClass);
-            }, 500);
-        }
+        this.showMessage('cleared list');
     }
 
     updateDisplay() {
-        this.container.innerHTML = '';
+        this.domElements.arrayContainer.innerHTML = '';
         this.elements.forEach((element, index) => {
             const div = document.createElement('div');
             div.className = 'array-element';
-            div.textContent = element;
+            div.textContent = element.toString();
             div.setAttribute('data-index', index);
-            this.container.appendChild(div);
+            this.domElements.arrayContainer.appendChild(div);
         });
-        this.sizeDisplay.textContent = this.elements.length;
-        this.isEmptyDisplay.textContent = this.elements.length === 0;
+        this.domElements.sizeDisplay.textContent = this.elements.length;
+        this.domElements.emptyDisplay.textContent = this.elements.length === 0;
     }
 }
 
-const arrayList = new ArrayList();
+const lists = {};
 
-function addElement() {
-    const input = document.getElementById('valueInput');
-    const value = input.value.trim();
-    if (value) {
-        arrayList.add(value);
-        input.value = '';
-        arrayList.methodResult.textContent = `added "${value}" to end of list`;
+function createNewList() {
+    const type = document.getElementById('listType').value;
+    const name = document.getElementById('listName').value.trim();
+
+    if (!name) {
+        alert('please enter a name for the arraylist');
+        return;
     }
-}
 
-function addAtIndex() {
-    const value = document.getElementById('valueInput').value.trim();
-    const index = parseInt(document.getElementById('indexInput').value);
-    if (value && !isNaN(index)) {
-        if (arrayList.addAt(index, value)) {
-            document.getElementById('valueInput').value = '';
-            document.getElementById('indexInput').value = '';
-            arrayList.methodResult.textContent = `added "${value}" at index ${index}`;
-        } else {
-            arrayList.methodResult.textContent = 'invalid index';
-        }
+    if (lists[name]) {
+        alert('an arraylist with this name already exists');
+        return;
     }
-}
 
-function removeElement() {
-    arrayList.removeLast();
-    arrayList.methodResult.textContent = 'removed last element';
+    lists[name] = new TypedArrayList(type, name);
+    document.getElementById('listName').value = '';
 }
-
-function removeAtIndex() {
-    const index = parseInt(document.getElementById('indexInput').value);
-    if (!isNaN(index)) {
-        if (arrayList.removeAt(index)) {
-            document.getElementById('indexInput').value = '';
-            arrayList.methodResult.textContent = `removed element at index ${index}`;
-        } else {
-            arrayList.methodResult.textContent = 'invalid index';
-        }
-    }
-}
-
-function setAtIndex() {
-    const value = document.getElementById('valueInput').value.trim();
-    const index = parseInt(document.getElementById('indexInput').value);
-    if (value && !isNaN(index)) {
-        if (arrayList.set(index, value)) {
-            document.getElementById('valueInput').value = '';
-            document.getElementById('indexInput').value = '';
-            arrayList.methodResult.textContent = `set "${value}" at index ${index}`;
-        } else {
-            arrayList.methodResult.textContent = 'invalid index';
-        }
-    }
-}
-
-function getAtIndex() {
-    const index = parseInt(document.getElementById('indexInput').value);
-    if (!isNaN(index)) {
-        const value = arrayList.get(index);
-        if (value !== null) {
-            arrayList.methodResult.textContent = `element at index ${index} is "${value}"`;
-        } else {
-            arrayList.methodResult.textContent = 'invalid index';
-        }
-    }
-}
-
-function findIndex() {
-    const value = document.getElementById('valueInput').value.trim();
-    if (value) {
-        const index = arrayList.indexOf(value);
-        document.getElementById('valueInput').value = '';
-        if (index !== -1) {
-            arrayList.methodResult.textContent = `"${value}" found at index ${index}`;
-        } else {
-            arrayList.methodResult.textContent = `"${value}" not found in list`;
-        }
-    }
-}
-
-function clearArray() {
-    arrayList.clear();
-    arrayList.methodResult.textContent = 'cleared all elements';
-}
-
-document.getElementById('valueInput').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-        addElement();
-    }
-});
