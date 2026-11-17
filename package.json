@@ -9,6 +9,7 @@
     "lint": "oxlint",
     "preview": "vite preview"
   },
+  "homepage": "https://orangejuiceplz.github.io",
   "dependencies": {
     "react": "^19.3.1",
     "react-dom": "^19.3.1"

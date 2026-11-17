@@ -22,8 +22,8 @@ export default function Skills({ skills }: { skills: string[] }) {
 
                 style= {{
                     fontSize: "20px",
-                    maxWidth: "300px",
-                    maxHeight: "250px",
+                    maxWidth: "50x",
+                    maxHeight: "50px",
             }}
             >
                 {hovering && <SkillImages skill={hovering}/>}

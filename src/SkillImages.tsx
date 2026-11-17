@@ -7,7 +7,9 @@ import opsec from './assets/opsec.png'
 
 
 // "Java", "Javascript", "HTML", "React", "CSS"
-const imageMap = {
+const imageMap: {
+    [skill : string] : string
+} = {
     "Java": javaLogo,
     "CSS": cssLogo,
     "Javascript": jsLogo,
