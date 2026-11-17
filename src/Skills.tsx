@@ -15,24 +15,26 @@ export default function Skills({ skills }: { skills: string[] }) {
             }}
         >
             {skills.map((skill) => (
-                <Skill skill={skill} setHovering={setHovering} />
+                <Skill skill={skill} setHovering={setHovering}/>
             ))}
 
             <div
-
-                style= {{
+                style={{
                     fontSize: "20px",
-                    maxWidth: "50x",
-                    maxHeight: "50px",
-            }}
+                    minHeight: "50px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                }}
             >
                 {hovering && <SkillImages skill={hovering}/>}
             </div>
+
         </div>
     );
 }
 
-export function Skill({ skill, setHovering}: { skill: string, setHovering: (arg0:string | null)=>void }) {
+export function Skill({skill, setHovering}: { skill: string, setHovering: (arg0: string | null) => void }) {
     return (
         <div
             className="skill-box"

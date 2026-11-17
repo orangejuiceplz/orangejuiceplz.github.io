@@ -21,8 +21,14 @@ const imageMap: {
 export default function skillImages({skill} : {skill: string}) {
     const image = imageMap[skill];
     return (
-        <>
-            <img src={image} alt={skill}/>
-        </>
-    )
+        <img
+            src={image}
+            alt={skill}
+            style={{
+                maxHeight: "50px",
+                maxWidth: "50px",
+                marginLeft: "75%",
+            }}
+        />
+    );
 }
