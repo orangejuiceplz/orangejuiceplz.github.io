@@ -6,13 +6,13 @@ export default function HeaderItem(
         name,
         selected,
         setSelected
-    } :
+    }:
 
-    {
+        {
             name: string;
             selected: boolean;
             setSelected: (arg0: string) => void;
-    }
+        }
 ) {
     const [isHovered, setHov] = useState<boolean>(false);
     return (
@@ -20,19 +20,20 @@ export default function HeaderItem(
 
             <li
 
-                onMouseOver={()=> setHov(true)}
-                onMouseLeave={()=> setHov(false)}
+                onMouseOver={() => setHov(true)}
+                onMouseLeave={() => setHov(false)}
                 onClick={() => setSelected(name)}
 
                 style={{
-                padding:'25px',
-                cursor: 'pointer',
-                color: selected? 'yellow' :isHovered? 'red' : 'white',
-            }}>
+                    padding: '25px',
+                    fontSize: "20px",
+                    cursor: 'pointer',
+                    color: selected ? 'gold' : isHovered ? 'red' : 'white',
+                }}>
                 {name}
             </li>
 
-    </>
+        </>
 
     );
 }

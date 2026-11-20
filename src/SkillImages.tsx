@@ -8,7 +8,7 @@ import opsec from './assets/opsec.png'
 
 // "Java", "Javascript", "HTML", "React", "CSS"
 const imageMap: {
-    [skill : string] : string
+    [skill: string]: string
 } = {
     "Java": javaLogo,
     "CSS": cssLogo,
@@ -18,7 +18,7 @@ const imageMap: {
     "opsec": opsec,
 }
 
-export default function skillImages({skill} : {skill: string}) {
+export default function SkillImages({skill}: { skill: string }) {
     const image = imageMap[skill];
     return (
         <img

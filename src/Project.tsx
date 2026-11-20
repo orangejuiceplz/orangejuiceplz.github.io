@@ -1,7 +1,7 @@
 import {useState} from "react";
 
-export default function Project( {
-                                     projName,
+export default function Project({
+                                    projName,
                                     projDescription,
                                     projImg,
                                     projLink,
@@ -29,7 +29,7 @@ export default function Project( {
                     maxWidth: '800px',
                     minHeight: '250px',
                     padding: '24px',
-                    border: hovered? '2px solid red' : '2px solid white',
+                    border: hovered ? '2px solid red' : '2px solid white',
                     borderRadius: '12px',
                     fontSize: '24px',
                     cursor: hovered ? 'progress' : 'pointer',
@@ -71,10 +71,10 @@ export default function Project( {
                         marginLeft: '40px',
                     }}
                 >
-                    <div id="name_right_top" style={{ paddingBottom: '16px' }} >
+                    <div id="name_right_top" style={{paddingBottom: '16px'}}>
                         <strong>{projName}</strong>
                     </div>
-                    <div id="description_right_below_name" style={{ fontSize: '18px'}}>
+                    <div id="description_right_below_name" style={{fontSize: '18px'}}>
                         {projDescription}
                     </div>
                 </div>

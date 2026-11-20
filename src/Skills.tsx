@@ -1,8 +1,8 @@
 import {useState} from "react";
 import SkillImages from "./SkillImages";
 
-export default function Skills({ skills }: { skills: string[] }) {
-    const [hovering, setHovering] = useState<(string | null)> (null)
+export default function Skills({skills}: { skills: string[] }) {
+    const [hovering, setHovering] = useState<(string | null)>(null)
 
     return (
         <div
@@ -48,8 +48,6 @@ export function Skill({skill, setHovering}: { skill: string, setHovering: (arg0:
                 padding: '30px',
                 border: '2px solid white',
             }}
-
-
 
 
         >
