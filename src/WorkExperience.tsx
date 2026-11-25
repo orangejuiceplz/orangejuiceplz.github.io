@@ -38,14 +38,17 @@ export default function WorkExperience(
                 style={{
                     display: "flex",
                     alignItems: 'center',
-                    justifyContent: 'center',
+                    justifyContent: 'space-between',
+                    gap: '40px',
                     margin: '20px auto',
                     width: '90%',
-                    maxWidth: '800px',
+                    maxWidth: '1000px',
                     minHeight: '250px',
-                    padding: '24px',
-                    fontSize: '24px',
+                    padding: '40px',
                     cursor: hovered ? 'crosshair' : 'pointer',
+                    border: hovered ? '2px solid red' : '2px solid white',
+                    backgroundColor: hovered ? 'grey' : 'transparent',
+                    borderRadius: '12px',
                 }}
 
 
@@ -56,36 +59,55 @@ export default function WorkExperience(
                     style={{
                         display: 'flex',
                         flexDirection: 'column',
-                        marginLeft: '40px',
                     }}
 
                 >
 
-                    <div>
+                    <div
+
+                        style={{
+                            fontSize: '28px',
+                            fontWeight: 'bold',
+                            paddingBottom: '8px',
+                        }}
+
+                    >
 
                         {position} at {company}
 
                     </div>
 
-                    <div>
+                    <div
+
+                        style={{
+                            fontSize: '16px',
+                            color: 'grey',
+                            paddingBottom: '20px',
+                        }}
+
+                    >
                         {start} - {end ? end : "present"}
                     </div>
 
-                    <div>
+                    <div
+                        style={{
+                            fontSize: '18px',
+                        }}
+                    >
                         {description}
                     </div>
                 </div>
 
                 <div
-                    id ={"right"}
+                    id={"right"}
                     style={{
                         display: 'flex',
                         justifyContent: 'center',
-                        alignItems: 'center',
+                        alignItems: 'center'
                     }}
 
                 >
-                    {imgSrc && <img src={imgSrc} alt={company} style={{ width: '50vw', height: '75vh'}} />}
+                    {imgSrc && <img src={imgSrc} alt={company} style={{width: '250px', height: '150px'}}/>}
                 </div>
 
 

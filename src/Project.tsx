@@ -30,9 +30,10 @@ export default function Project({
                     minHeight: '250px',
                     padding: '24px',
                     border: hovered ? '2px solid red' : '2px solid white',
-                    borderRadius: '12px',
+                        borderRadius: '12px',
                     fontSize: '24px',
                     cursor: hovered ? 'progress' : 'pointer',
+                    backgroundColor: hovered ? 'grey' : 'transparent',
                 }}
             >
                 <div

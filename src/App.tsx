@@ -14,7 +14,7 @@ function App() {
                 style={{
                     display: 'flex',
                     listStyle: 'none',
-                    width: '100vw',
+                    width: '100%',
                     position: 'sticky',
                     margin: '0',
                     padding: '0',
@@ -23,22 +23,23 @@ function App() {
                     backgroundColor: 'black',
                 }}
             >
+                <HeaderItem name={"Home"} selected={display === "Home"} setSelected={setDisplay}/>
+                <HeaderItem name={"Projects"} selected={display === "Projects"} setSelected={setDisplay}/>
+                <HeaderItem name={"Skills"} selected={display === "Skills"} setSelected={setDisplay}/>
                 <li
 
                     onMouseOver={() => setHovered(true)}
                     onMouseOut={() => setHovered(false)}
                     style={{
+                        marginLeft: 'auto',
                         fontSize: "20px",
                         color: hovered ? "gold" : "white",
+                        padding: "20px",
                     }}
 
                 >
                     Shiven Kishore
                 </li>
-                <HeaderItem name={"Home"} selected={display === "Home"} setSelected={setDisplay}/>
-                <HeaderItem name={"Projects"} selected={display === "Projects"} setSelected={setDisplay}/>
-                <HeaderItem name={"Skills"} selected={display === "Skills"} setSelected={setDisplay}/>
-                <HeaderItem name={"Work Experience"} selected={display === "Work Experience"} setSelected={setDisplay}/>
             </ul>
 
             {
@@ -73,27 +74,34 @@ function Home() {
             <div style={{
                 display: 'grid',
                 gridTemplateRows: 'repeat(3, auto)',
-                gap: '12px',
-                paddingTop: '5%',
-                paddingLeft: '50%'
+                justifyItems: 'center',
+                gap: '8px',
+                paddingTop: '80px',
+                paddingBottom: '40px',
             }}>
                 <p
                     onMouseOver={() => setHovered(true)}
                     onMouseOut={() => setHovered(false)}
                     style={{
-                        fontSize: "20px",
+                        margin: '0',
+                        lineHeight: '70px',
+                        fontSize: hovered ? "56px" : "48px",
+                        fontWeight: 'bold',
                         color: hovered ? "gold" : "grey",
                     }}
                 >Shiven Kishore</p>
-                <p>Class of 2027</p>
-                <p>Freehold High School</p>
+                <p style={{margin: '0', fontSize: '22px'}}>Class of 2027</p>
+                <p style={{margin: '0', fontSize: '18px'}}>Freehold High School</p>
             </div>
+
+            <h2 style={{textAlign: 'center', fontSize: '32px', margin: '0'}}>Experience</h2>
 
             <WorkExperience position={"President"}
                             start={"9-28-2026"}
-                            description={"doing nonsnese"}
+                            description={"Chartering the future operations of NibbleCode Inc."}
                             link={"https://nibblecode.org"}
                             company={"NibbleCode Inc."}
+                            imgSrc={"src/assets/NibbleCode.png"}
             />
 
         </>
@@ -107,7 +115,7 @@ function Projects() {
             <Project
                 projName={"Copy Website"}
                 projDescription={"The first major project that we did in Honors Senior Seminar: Web Data and AI where we needed to copy the model website using our newfound knowledge of HTML, CSS, and JS"}
-                projImg={"src/assets/calc.png"}
+                projImg={"src/assets/copywebsite.png"}
                 projLink={"https://orangejuiceplz.github.io/Copy-Website"}
             />
             <Project
@@ -121,4 +129,3 @@ function Projects() {
 }
 
 export default App
-

@@ -29,6 +29,7 @@ export default function HeaderItem(
                     fontSize: "20px",
                     cursor: 'pointer',
                     color: selected ? 'gold' : isHovered ? 'red' : 'white',
+                    borderBottom: selected ? '3px solid gold' : '3px solid transparent',
                 }}>
                 {name}
             </li>
