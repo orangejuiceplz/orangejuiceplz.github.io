@@ -3,6 +3,9 @@ import Project from "./Project.tsx";
 import Skills from "./Skills.tsx";
 import HeaderItem from "./HeaderItem.tsx";
 import WorkExperience from "./WorkExperience.tsx";
+import CopyWebsite from "./assets/copy.png";
+import Calc from './assets/calc.png';
+import NibbleCode from './assets/NibbleCode.png';
 
 function App() {
     const [display, setDisplay] = useState<string>("Home");
@@ -101,7 +104,7 @@ function Home() {
                             description={"Chartering the future operations of NibbleCode Inc."}
                             link={"https://nibblecode.org"}
                             company={"NibbleCode Inc."}
-                            imgSrc={"src/assets/NibbleCode.png"}
+                            imgSrc={NibbleCode}
             />
 
         </>
@@ -115,13 +118,13 @@ function Projects() {
             <Project
                 projName={"Copy Website"}
                 projDescription={"The first major project that we did in Honors Senior Seminar: Web Data and AI where we needed to copy the model website using our newfound knowledge of HTML, CSS, and JS"}
-                projImg={"src/assets/copywebsite.png"}
+                projImg={CopyWebsite}
                 projLink={"https://orangejuiceplz.github.io/Copy-Website"}
             />
             <Project
                 projName={"Calculator"}
                 projDescription={"The second major project that we did in class where we needed to recreate a calculator that we designed. It tested our skill with both stying and using JS"}
-                projImg={"src/assets/calc.png"}
+                projImg={Calc}
                 projLink={"https://orangejuiceplz.github.io/Calculator"}
             />
         </>
